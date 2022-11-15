@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtrace</title>
+    <style>
+table, th, td {
+    border:1px solid black;
+    padding: 5px
+}
+
+th {
+  background-color: #4885b8;
+  color: white;
+}
+
+tr:hover {background-color: #FFF8DC;}
+</style>
+</head>
+<body>
+
+
+<form method="POST">
+        {% csrf_token %}
+        {{ form }}
+    </form>
+
+<table>
+    <tr>
+    <th>Název</th>
+        <th>Typ</th>
+        <th>Obchod</th>
+        <th>Cena</th>
+    </tr>
+    {% for gpu in gpus %}
+
+    <tr><td><a href={{ gpu.url }}>{{ gpu.name }}</a></td><td align="center">{{ gpu.version }}</td> <td>{{ gpu.shop }}</td> <td>{{ gpu.price }} Kč</td></tr>
+
+    {% endfor %}
+</table>
+</body>
+</html>

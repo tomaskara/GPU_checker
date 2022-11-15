@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <title>Gpu checker</title>
+
+</head>
+<body>
+
+<section class="hero is-link is-small">
+  <div class="hero-body">
+    <p class="title">
+      Gpu price checker
+    </p>
+    <p class="subtitle">
+      Ceny grafických karet Nvidia RTX 3xxx na CZ eshopech
+    </p>
+  </div>
+</section>
+
+<div class="box">
+{% if volba == "Vše" %}
+<a href="/?m=Vše" class="button is-small is-warning">Vše</a>
+    {% else %}
+    <a href="/?m=Vše" class="button is-small">Vše</a>
+{% endif %}
+{% if volba == "3060" %}
+<a href="/?m=3060" class="button is-small is-warning">3060</a>
+    {% else %}
+    <a href="/?m=3060" class="button is-small">3060</a>
+{% endif %}
+
+{% if volba == "3060 Ti" %}
+<a href="/?m=3060 Ti" class="button is-small is-warning">3060 Ti</a>
+    {% else %}
+    <a href="/?m=3060 Ti" class="button is-small">3060 Ti</a>
+{% endif %}
+
+{% if volba == "3070" %}
+<a href="/?m=3070" class="button is-small is-warning">3070</a>
+    {% else %}
+    <a href="/?m=3070" class="button is-small">3070</a>
+{% endif %}
+
+{% if volba == "3070 Ti" %}
+<a href="/?m=3070 Ti" class="button is-small is-warning">3070 Ti</a>
+    {% else %}
+    <a href="/?m=3070 Ti" class="button is-small">3070 Ti</a>
+{% endif %}
+
+{% if volba == "3080" %}
+<a href="/?m=3080" class="button is-small is-warning">3080</a>
+    {% else %}
+    <a href="/?m=3080" class="button is-small">3080</a>
+{% endif %}
+
+{% if volba == "3080 Ti" %}
+<a href="/?m=3080 Ti" class="button is-small is-warning">3080 Ti</a>
+    {% else %}
+    <a href="/?m=3080 Ti" class="button is-small">3080 Ti</a>
+{% endif %}
+
+{% if volba == "3090" %}
+<a href="/?m=3090" class="button is-small is-warning">3090</a>
+    {% else %}
+    <a href="/?m=3090" class="button is-small">3090</a>
+{% endif %}
+</div>
+
+<div class="container is-fluid">
+<table class="table is-bordered is-striped is-hoverable">
+    <thead class="has-background-info-dark">
+    <tr>
+    <th class="has-text-white">Název</th>
+        <th class="has-text-white">Typ</th>
+        <th class="has-text-white">Obchod</th>
+        <th class="has-text-white">Cena</th>
+        <th class="has-text-white">Graf</th>
+    </tr>
+    </thead>
+
+<tbody>
+    {% for gpu in gpus %}
+        <tr><td><a href={{ gpu.url }}>{{ gpu.name }}</a></td><td align="center">{{ gpu.version }}</td> <td>{{ gpu.shop }}</td><td>{{ gpu.price }} Kč</td><td><a href="/g/?n={{ gpu.name }}&s={{ gpu.shop }}" class="button is-small">Graf</a></td></tr>
+
+    {% endfor %}
+
+</tbody>
+</table>
+</div>
+   <footer class="box">
+{% for gpu in gpus|slice:":1" %}
+<p>Poslední čas aktualizace: {{ gpu.updated|date:"d.m.Y" }} {{ gpu.updated|time:"H:i" }} </p>
+
+{% endfor %}
+
+<!-- <a href="/o-projektu" class=""><b>O projektu</b></a> -->
+    </footer>
+</body>
+</html>

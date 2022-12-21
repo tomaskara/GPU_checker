@@ -108,6 +108,8 @@ def alza():
                 page_alza = requests.get(
                     f"https://www.alza.cz/graficke-karty-nvidia-geforce-rtx-30/18881565-p{len(results) + 1}.htm",
                     proxies={"http": proxy, "https": proxy}, timeout=15, headers=header)
+                print(str(page_alza))
+                print(page_alza.url)
                 if str(page_alza) == "<Response [200]>" and "captcha" not in page_alza.url:
                     print("Gut respons")
                     soup = BeautifulSoup(page_alza.content, "html.parser")

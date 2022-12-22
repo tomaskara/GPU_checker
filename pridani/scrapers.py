@@ -112,10 +112,10 @@ def alza():
         for i in range(1, len(proxies) + 1):
             # Get a proxy from the pool
             proxy = "http://" + next(proxy_pool)
-            print("Alza Request #%d" % i)
+            print(f"Alza Request {i} with proxy {proxy}" )
             try:
                 page_alza = requests.get(
-                    f"https://www.alza.cz/graficke-karty-nvidia-geforce-rtx-30/18881565-p{len(results) + 1}.htm",
+                    f"https://www.alza.cz/graficke-karty-nvidia-geforce-rtx-30/18881565-p.htm",
                     proxies={"http": proxy, "https": proxy}, timeout=15, headers=header)
                 print(str(page_alza))
                 print(page_alza.url)

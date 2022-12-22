@@ -115,7 +115,7 @@ def alza():
             print(f"Alza Request {i} with proxy {proxy}" )
             try:
                 page_alza = requests.get(
-                    f"https://www.alza.cz/graficke-karty-nvidia-geforce-rtx-30/18881565-p.htm",
+                    f"https://www.alza.cz/graficke-karty-nvidia-geforce-rtx-30/18881565.htm",
                     proxies={"http": proxy, "https": proxy}, timeout=15, headers=header)
                 print(str(page_alza))
                 print(page_alza.url)

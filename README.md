@@ -11,7 +11,6 @@
 
 
 ## Demo
-Here is a working live demo :  https://gpu-price-checker.onrender.com/
 
 
 ## Site
